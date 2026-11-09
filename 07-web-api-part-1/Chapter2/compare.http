@@ -1,0 +1,7 @@
+@host = http://localhost:5000
+
+### Controller version
+GET {{host}}/controller/expenses
+
+### Minimal API version (same result)
+GET {{host}}/minimal/expenses

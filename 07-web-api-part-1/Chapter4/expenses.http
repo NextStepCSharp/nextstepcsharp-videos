@@ -1,0 +1,32 @@
+@host = http://localhost:5000
+
+### 1. Get all expenses
+GET {{host}}/expenses
+
+### 2. Get expense 2
+GET {{host}}/expenses/2
+
+### 3. Get expense 99 (it doesn't exist)
+GET {{host}}/expenses/99
+
+### 4. Add an expense
+POST {{host}}/expenses
+Content-Type: application/json
+
+{
+  "description": "Movie night",
+  "amount": 18,
+  "category": "Fun"
+}
+
+### 5. Total of all expenses
+GET {{host}}/expenses/total
+
+### 6. Delete expense 99 (it doesn't exist)
+DELETE {{host}}/expenses/99
+
+### 7. Get the expense we just added (id 4)
+GET {{host}}/expenses/4
+
+### 8. Delete expense 4 (it exists now)
+DELETE {{host}}/expenses/4

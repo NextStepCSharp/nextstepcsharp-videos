@@ -1,0 +1,25 @@
+@host = http://localhost:5000
+
+### 1. Ask the AI for a category
+POST {{host}}/expenses/categorize
+Content-Type: application/json
+
+{ "description": "Pizza with friends" }
+
+### 2. Another one
+POST {{host}}/expenses/categorize
+Content-Type: application/json
+
+{ "description": "Uber to airport" }
+
+### 3. Another one
+POST {{host}}/expenses/categorize
+Content-Type: application/json
+
+{ "description": "Electricity bill" }
+
+### 4. Empty description -> 400 Bad Request
+POST {{host}}/expenses/categorize
+Content-Type: application/json
+
+{ "description": "" }
