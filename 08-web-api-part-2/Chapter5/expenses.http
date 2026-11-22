@@ -1,0 +1,40 @@
+@host = http://localhost:5000
+
+### 1. AI picks the category and saves it
+POST {{host}}/expenses/smart
+Content-Type: application/json
+
+{
+  "description": "Electricity bill for October",
+  "amount": 60
+}
+
+### 2. Another one
+POST {{host}}/expenses/smart
+Content-Type: application/json
+
+{
+  "description": "Concert tickets",
+  "amount": 75
+}
+
+### 3. Empty description -> 400
+POST {{host}}/expenses/smart
+Content-Type: application/json
+
+{
+  "description": "",
+  "amount": 10
+}
+
+### 4. Totals: Bills is not 0 any more
+GET {{host}}/expenses/by-category
+
+### 5. Stop Ollama, then send this -> 503
+POST {{host}}/expenses/smart
+Content-Type: application/json
+
+{
+  "description": "Train ticket",
+  "amount": 12
+}

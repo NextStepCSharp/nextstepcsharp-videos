@@ -1,0 +1,23 @@
+@host = http://localhost:5000
+
+### 1. Get all expenses
+GET {{host}}/expenses
+
+### 2. Add Movie night
+POST {{host}}/expenses
+Content-Type: application/json
+
+{
+  "description": "Movie night",
+  "amount": 18,
+  "category": "Fun"
+}
+
+### 3. Total of all expenses
+GET {{host}}/expenses/total
+
+### 4. Get expense 4 (Movie night)
+GET {{host}}/expenses/4
+
+### 5. THE RESTART TEST: stop the API, start it again, then send this
+GET {{host}}/expenses

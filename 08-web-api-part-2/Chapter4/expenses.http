@@ -1,0 +1,17 @@
+@host = http://localhost:5000
+
+### 1. Totals per category (Bills has no expenses: does it show up?)
+GET {{host}}/expenses/by-category
+
+### 2. Add Movie night (category 4 = Fun)
+POST {{host}}/expenses
+Content-Type: application/json
+
+{
+  "description": "Movie night",
+  "amount": 18,
+  "categoryId": 4
+}
+
+### 3. Totals again
+GET {{host}}/expenses/by-category

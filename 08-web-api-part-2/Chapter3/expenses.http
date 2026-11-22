@@ -1,0 +1,33 @@
+@host = http://localhost:5000
+
+### 1. Get all expenses (with category)
+GET {{host}}/expenses
+
+### 2. Get expense 1
+GET {{host}}/expenses/1
+
+### 3. Add Movie night (category 4 = Fun)
+POST {{host}}/expenses
+Content-Type: application/json
+
+{
+  "description": "Movie night",
+  "amount": 18,
+  "categoryId": 4
+}
+
+### 4. Delete an expense that does not exist
+DELETE {{host}}/expenses/99
+
+### 5. After a restart: is Movie night really saved?
+GET {{host}}/expenses/4
+
+### 6. Add with a category that does not exist
+POST {{host}}/expenses
+Content-Type: application/json
+
+{
+  "description": "Mystery",
+  "amount": 5,
+  "categoryId": 99
+}
