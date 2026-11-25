@@ -1,0 +1,38 @@
+@host = http://localhost:5000
+
+### 1. Before: expense 1
+GET {{host}}/expenses/1
+
+### 2. Full update
+PUT {{host}}/expenses/1
+Content-Type: application/json
+
+{ "description": "Pizza night", "amount": 30 }
+
+### 3. Id that does not exist
+PUT {{host}}/expenses/99
+Content-Type: application/json
+
+{ "description": "Pizza night", "amount": 30 }
+
+### 4. Only the description (amount not sent)
+PUT {{host}}/expenses/1
+Content-Type: application/json
+
+{ "description": "Pizza night" }
+
+### 5. Empty description and a negative amount
+PUT {{host}}/expenses/1
+Content-Type: application/json
+
+{ "description": "", "amount": -50 }
+
+### 6. Only the amount (description not sent)
+PUT {{host}}/expenses/1
+Content-Type: application/json
+
+{ "amount": 30 }
+
+### 7. After: expense 1
+GET {{host}}/expenses/1
+

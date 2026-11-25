@@ -1,0 +1,38 @@
+@host = http://localhost:5000
+
+### 1. Before: expense 1
+GET {{host}}/expenses/1
+
+### 2. PATCH only the description
+PATCH {{host}}/expenses/1
+Content-Type: application/json
+
+{ "description": "Pizza night" }
+
+### 3. PATCH only the amount
+PATCH {{host}}/expenses/1
+Content-Type: application/json
+
+{ "amount": 30 }
+
+### 4. PATCH with a bad amount
+PATCH {{host}}/expenses/1
+Content-Type: application/json
+
+{ "amount": -5 }
+
+### 5. PATCH an id that does not exist
+PATCH {{host}}/expenses/99
+Content-Type: application/json
+
+{ "amount": 30 }
+
+### 6. PUT still needs everything
+PUT {{host}}/expenses/1
+Content-Type: application/json
+
+{ "description": "Pizza night" }
+
+### 7. After: expense 1
+GET {{host}}/expenses/1
+
